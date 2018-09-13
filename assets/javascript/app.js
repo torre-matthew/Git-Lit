@@ -1,7 +1,7 @@
 // constructs the suggestion engine
-var colors_suggestions = new Bloodhound({
-  datumTokenizer: Bloodhound.tokenizers.whitespace, // see its meaning above
-  queryTokenizer: Bloodhound.tokenizers.whitespace, // see its meaning above
+var ingredients_suggestions = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.whitespace, 
+  queryTokenizer: Bloodhound.tokenizers.whitespace, 
   local: ["151 proof rum","7-up","Absinthe","Absolut citron","Absolut Kurant","Absolut Peppar","Absolut Vodka",
           "Advocaat","Aejo rum","Aftershock","Agave syrup","Ale","Allspice","Almond Extract","Almond flavoring",
           "Almond","Amaretto","Angelica Root","Angostura Bitters","Anis","Anise","Anisette","Aperol","Apfelkorn",
@@ -78,6 +78,6 @@ $('.typeahead').typeahead({
   minLength: 1
 },
 {
-  name: 'colors',
-  source: colors_suggestions   // Bloodhound instance is passed as the source
+  name: 'ingredients',
+  source: ingredients_suggestions   // Bloodhound instance is passed as the source
 });
