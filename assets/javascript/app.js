@@ -1,23 +1,17 @@
-
-
-$("#add-drink-choices-btn").on("click", function (event) {
-    event.preventDefault();
-
+function callYoutubeApi () {
     let cockTail = $("#drink-name-input").val().trim();
         console.log(cockTail);
-
-
-    let queryUrlSearch = "https://www.googleapis.com/youtube/v3/search?q=" + cockTail + "&cocktail&drink&recipe&part=snippet&type=video&&order=rating&videoEmbeddable=true&videoDefinition=high&key=AIzaSyAl9Bp8LbWiQeAUi0_6uRBLLhnBI6le7K4";
-
+    let youTubeURL = "https://www.googleapis.com/youtube/v3/search?q=How&to&make&a&" + cockTail + "&cocktail&part=snippet&type=video&order=relevance&videoEmbeddable=true&videoDefinition=high&key=AIzaSyAl9Bp8LbWiQeAUi0_6uRBLLhnBI6le7K4";
+     
     $.ajax({
-        url: queryUrlSearch,
+        url: youTubeURL,
         method: "GET"
     }).then(function(response){
-        let responseDataSearch = response;
-            console.log(responseDataSearch);
+        let youTubeApiResponse = response;
+            console.log(youTubeApiResponse);
 
-        let videoID = responseDataSearch.items[0].id.videoId;
-        let videoURL = "https://www.youtube.com/embed/" + videoID;
+        let videoID = youTubeApiResponse.items[0].id.videoId;
+        let videoURL = "https://www.youtube.com/embed/" + videoID; //Build embed URL from API response
             console.log(videoID);
             console.log(videoURL);
         // Add iframe to the page with youtube video when results comeback.
@@ -26,11 +20,38 @@ $("#add-drink-choices-btn").on("click", function (event) {
             .attr("src", videoURL);
             
         $(".embed-responsive").append(iframe);
+    });   
+}
+
+function callcocktailDbApi () {
+    let cockTail = $("#drink-name-input").val().trim();
+        console.log(cockTail);
+    let cocktailDBURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + cockTail;
+
+    //Response from Cocktail DB
+    $.ajax({
+        url: cocktailDBURL,
+        method: "GET"
+    }).then(function(response){
+        let cocktailDbApiResponse = response;
+            console.log(cocktailDbApiResponse);
+
+
+        let image = $("<img>")
+                    .addClass("card-img-top")
+                    .attr("src", cocktailDbApiResponse.drinks[0].strDrinkThumb)
+                    .attr("alt", "Card Image Cap");
+
+        let drinkName = $("<h3>")
+                    .attr("id","drinkName")
+                    .text(cocktailDbApiResponse.drinks[0].strDrink);
+
+        $(".drink-image").append(image).append(drinkName);
     });
+}
 
-        
-
-
-    
-
+$("#add-drink-choices-btn").on("click", function (event) {
+    event.preventDefault();
+    callYoutubeApi();
+    callcocktailDbApi();
 });
