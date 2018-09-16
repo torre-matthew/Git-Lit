@@ -52,7 +52,57 @@ function callcocktailDbApi () {
                     .text(cocktailDbApiResponse.drinks[0].strDrink);
 
 //Add the cocktail image and name to the page
-        $(".drink-image").append(image).append(drinkName);
+            $(".drink-image").append(drinkName).append(image);
+
+        let ingredient = [cocktailDbApiResponse.drinks[0].strIngredient1,
+                            cocktailDbApiResponse.drinks[0].strIngredient2,
+                            cocktailDbApiResponse.drinks[0].strIngredient3,
+                            cocktailDbApiResponse.drinks[0].strIngredient4,
+                            cocktailDbApiResponse.drinks[0].strIngredient5,
+                            cocktailDbApiResponse.drinks[0].strIngredient6,
+                            cocktailDbApiResponse.drinks[0].strIngredient7,
+                            cocktailDbApiResponse.drinks[0].strIngredient8,
+                            cocktailDbApiResponse.drinks[0].strIngredient9,
+                            cocktailDbApiResponse.drinks[0].strIngredient10,
+                            cocktailDbApiResponse.drinks[0].strIngredient11,
+                            cocktailDbApiResponse.drinks[0].strIngredient12,
+                            cocktailDbApiResponse.drinks[0].strIngredient13,
+                            cocktailDbApiResponse.drinks[0].strIngredient14,
+                            cocktailDbApiResponse.drinks[0].strIngredient15];
+
+        let measurements = [cocktailDbApiResponse.drinks[0].strMeasure1,
+                            cocktailDbApiResponse.drinks[0].strMeasure2,
+                            cocktailDbApiResponse.drinks[0].strMeasure3,
+                            cocktailDbApiResponse.drinks[0].strMeasure4,
+                            cocktailDbApiResponse.drinks[0].strMeasure5,
+                            cocktailDbApiResponse.drinks[0].strMeasure6,
+                            cocktailDbApiResponse.drinks[0].strMeasure7,
+                            cocktailDbApiResponse.drinks[0].strMeasure8,
+                            cocktailDbApiResponse.drinks[0].strMeasure9,
+                            cocktailDbApiResponse.drinks[0].strMeasure10,
+                            cocktailDbApiResponse.drinks[0].strMeasure11,
+                            cocktailDbApiResponse.drinks[0].strMeasure12,
+                            cocktailDbApiResponse.drinks[0].strMeasure13,
+                            cocktailDbApiResponse.drinks[0].strMeasure14,
+                            cocktailDbApiResponse.drinks[0].strMeasure15];
+//Run through the array of ingredients and measurments
+            ingredientsLoop: for (let i = 0; i < ingredient.length; i++) {
+                    console.log (measurements[i] + ingredient[i]);
+    //Build list items for ingredients
+            let listItem = $("<li>").text(measurements[i] + ingredient[i]);
+    //The cocktail DB Api returns 15 ingredient strings but it's rare that a cocktail has that many ingredients. This if statement will terminate the loop after the last ingredient so that we only display the ingredients available
+                if (ingredient[i] != "") {
+                    $("#ingredientList").append(listItem);
+                }else {
+                    break ingredientsLoop;
+                }
+            }
+        
+        let instructionP = $("<p>")
+                                .attr("id", "instructions")
+                                .text(cocktailDbApiResponse.drinks[0].strInstructions)
+
+            $(".inst").append(instructionP);
     });
 }
 
@@ -64,6 +114,12 @@ $("#add-drink-choices-btn").on("click", function (event) {
     callcocktailDbApi();
 //On subsequent form submissions, clear values so that we don't have images stacking.
     $(".drink-image").empty();
+//On subsequent searches clear out the previous youtube video otherwise you can have two videos playing at once
+    $(".embed-responsive").empty();
+//On subsequent form submissions, clear values so that we don't have ingredients stacking.
+    $("#ingredientList").empty();
+//On subsequent form submissions, clear instruction values.
+    $(".inst").empty();
 });
 
 
