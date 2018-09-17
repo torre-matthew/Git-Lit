@@ -1,0 +1,46 @@
+*{
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 15px; 
+}
+
+.jumbotron{
+    color: black; 
+}
+
+h1.text-center{
+    font-size: 100px;
+}
+
+#top{
+    padding-left:0;
+    padding-right:0;
+}
+
+#jumbo-container {
+    background-image: url("../images/bgimg2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    width: 100%;
+    background-size: 100%;
+    margin: 0px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* body{
+    background-image: url("../images/bgimg2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: 0.5;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-image: fixed;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+} */
