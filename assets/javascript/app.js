@@ -1,5 +1,5 @@
 // constructs the suggestion engine
-var ingredients_suggestions = new Bloodhound({
+var ingredients_suggestions = new Bloodhound ({
   datumTokenizer: Bloodhound.tokenizers.whitespace, 
   queryTokenizer: Bloodhound.tokenizers.whitespace, 
   local: ["151 proof rum","7-up","Absinthe","Absolut citron","Absolut Kurant","Absolut Peppar","Absolut Vodka",
@@ -72,14 +72,15 @@ var ingredients_suggestions = new Bloodhound({
           "Wildberry schnapps","Wine","Worcestershire Sauce","Wormwood","Yeast","Yellow Chartreuse","Yoghurt","Yukon Jack",
           "Zima","Zucchini",]
 });
-$('.typeahead').typeahead({
-  hint: true,
-  highlight: true,
-  minLength: 1
-},
-{
-  name: 'ingredients',
-  source: ingredients_suggestions   // Bloodhound instance is passed as the source
+
+    $('#ingredient-input').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+    },
+    {
+        name: 'ingredients',
+        source: ingredients_suggestions   // Bloodhound instance is passed as the source
 });
 
 //THis function handles the youtube api response
