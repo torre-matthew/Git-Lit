@@ -27,6 +27,15 @@ h1.text-center{
     margin-bottom: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+    text-align: center;
+}
+
+#mobile-navbar{
+    display: none;
+}
+
+#desktop-navbar{
+    display: inline;
 }
 
 /* body{
@@ -44,3 +53,25 @@ h1.text-center{
     -moz-background-size: cover;
     -webkit-background-size: cover;
 } */
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 600px) {
+    /* Styles */
+    #mobile-navbar{
+        display: inline;
+    }
+    #desktop-navbar{
+        display: none;
+    }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 600px) and (max-device-width : 1024px) {
+    /* Styles */
+    #mobile-navbar{
+        display: none;
+    }
+    #desktop-navbar{
+        display: inline;
+    }
+}
