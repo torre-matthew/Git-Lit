@@ -135,6 +135,10 @@ function callRandomCocktail () {
     }).then(function(response){
     let randomCocktailDbApiResponse = response;
         console.log(randomCocktailDbApiResponse);
+    let randomCockTail = randomCocktailDbApiResponse.drinks[0].strDrink
+        console.log(randomCockTail);
+    return randomCockTail;
+
     
 //Build the image html
     let image = $("<img>")
@@ -199,11 +203,35 @@ function callRandomCocktail () {
                             .text(randomCocktailDbApiResponse.drinks[0].strInstructions)
 
         $(".inst").append(instructionP);
-    console.log(randomCocktailDbApiResponse.drinks[0].strDrink);
 });
-
-
 }
+
+//This function handles the youtube api response
+//function callrandomYoutubeApi () {
+    //let randomyouTubeURL = "https://www.googleapis.com/youtube/v3/search?q=" + randomCockTail + "&part=snippet&channelId=UCaDY8WjYWy36bnt0RVzSklw&type=video&order=relevance&videoEmbeddable=true&key=AIzaSyAl9Bp8LbWiQeAUi0_6uRBLLhnBI6le7K4";
+    //console.log(randomyouTubeURL);
+// Get Response from the Youtube API
+    //$.ajax({
+        //url: randomyouTubeURL,
+        //method: "GET"
+    //}).then(function(response){
+        //let youTubeApiResponse = response;
+            //console.log(youTubeApiResponse);
+//Capture the video ID from api as it will be needed to build the appropriate video URL.
+        //let videoID = youTubeApiResponse.items[0].id.videoId;
+//Build embed URL from API response
+        //let videoURL = "https://www.youtube.com/embed/" + videoID; 
+            //console.log(videoID);
+            //console.log(videoURL);
+
+// Build iframe html
+        //let iframe = $("<iframe>")
+            //.addClass("embed-responsive-item")
+            //.attr("src", videoURL);
+//Add the iframe to the page.
+        //$(".embed-responsive").append(iframe);
+    //});   
+//}
 
 
 
@@ -211,7 +239,7 @@ function callRandomCocktail () {
 $("#add-random-drink-btn").on("click", function (event) {
 event.preventDefault();
 
-callYoutubeApi();
+//callrandomYoutubeApi();
 callRandomCocktail();
 //On subsequent form submissions, clear values so that we don't have images stacking.
 $(".drink-image").empty();
