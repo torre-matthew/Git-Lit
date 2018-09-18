@@ -44,3 +44,35 @@ h1.text-center{
     -moz-background-size: cover;
     -webkit-background-size: cover;
 } */
+
+/* .label{
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    font-size: 1.15em;
+    position: absolute;
+} */
+
+.drinkInput{
+    margin-left:9%;
+    position: absolute;
+}
+
+.tt-menu { /*THIS IS THE CLASS FOR THE DROPDOWN MENU OF SUGGESTIONS*/
+    width: 222px;
+    margin-top: 12px;
+    /* CHANGE MARGIN TO MOVE MENU */
+    margin-left:9%;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion { /*THIS IS THE CLASS FOR INDIVIDUAL SUGGESTIONS*/
+    padding: 3px 20px;
+    font-size: 12px;
+    line-height: 24px;
+}
