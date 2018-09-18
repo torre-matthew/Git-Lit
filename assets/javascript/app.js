@@ -135,9 +135,8 @@ function callRandomCocktail () {
     }).then(function(response){
     let randomCocktailDbApiResponse = response;
         console.log(randomCocktailDbApiResponse);
-    let randomCockTail = randomCocktailDbApiResponse.drinks[0].strDrink
+    let randomCockTail = JSON.stringify(randomCocktailDbApiResponse.drinks[0].strDrink);
         console.log(randomCockTail);
-    return randomCockTail;
 
     
 //Build the image html
@@ -206,7 +205,7 @@ function callRandomCocktail () {
 });
 }
 
-//This function handles the youtube api response
+//This function handles the youtube api response for random response
 //function callrandomYoutubeApi () {
     //let randomyouTubeURL = "https://www.googleapis.com/youtube/v3/search?q=" + randomCockTail + "&part=snippet&channelId=UCaDY8WjYWy36bnt0RVzSklw&type=video&order=relevance&videoEmbeddable=true&key=AIzaSyAl9Bp8LbWiQeAUi0_6uRBLLhnBI6le7K4";
     //console.log(randomyouTubeURL);
