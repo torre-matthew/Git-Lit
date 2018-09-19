@@ -12,10 +12,10 @@
 }
 
 input#drink-name-input.form-control{
-    margin: 20px;
-    margin-left: 15%;
-    margin-right: 15%;
-    width: 70%;
+    /* margin: 20px; */
+    /* margin-left: 15%;
+    margin-right: 15%; */
+    width: 100%;
 }
 
 .jumbotron{
@@ -121,3 +121,23 @@ h5{
     -webkit-background-size: cover;
     }
 }
+
+.tt-menu { /*THIS IS THE CLASS FOR THE DROPDOWN MENU OF SUGGESTIONS*/
+    width: 222px;
+    margin-top: 12px;
+    /* CHANGE MARGIN TO MOVE MENU */
+    margin-left:0%;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion { /*THIS IS THE CLASS FOR INDIVIDUAL SUGGESTIONS*/
+    padding: 3px 20px;
+    font-size: 12px;
+    line-height: 24px;
+}
+
