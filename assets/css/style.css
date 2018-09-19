@@ -3,6 +3,21 @@
     font-size: 15px; 
 }
 
+#mobile-navbar{
+    display: none;
+}
+
+#desktop-navbar{
+    display: inline;
+}
+
+input#drink-name-input.form-control{
+    margin: 20px;
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 70%;
+}
+
 .jumbotron{
     color: black; 
 }
@@ -16,6 +31,13 @@ h1.text-center{
     padding-right:0;
 }
 
+h5{
+    background-color: rgb(255, 255, 255, 0.6);
+    padding: 8px;
+    /* border-color: rgb(255, 255, 255, 0.9); */
+    border-radius: 5px;
+}
+
 #jumbo-container {
     background-image: url("../images/bgimg2.jpg");
     background-repeat: no-repeat;
@@ -27,7 +49,10 @@ h1.text-center{
     margin-bottom: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+    text-align: center;
 }
+
+
 
 /* body{
     background-image: url("../images/bgimg2.jpg");
@@ -44,3 +69,55 @@ h1.text-center{
     -moz-background-size: cover;
     -webkit-background-size: cover;
 } */
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 600px) {
+    /* Styles */
+    #mobile-navbar{
+        display: inline;
+    }
+    #desktop-navbar{
+        display: none;
+    }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 600px) and (max-device-width : 1024px) {
+    /* Styles */
+    #mobile-navbar{
+        display: none;
+    }
+    #desktop-navbar{
+        display: inline;
+    }
+
+    #jumbo-container {
+        background-image: url("../images/bgimg2.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 600px;
+        width: 100%;
+        background-size: 100%;
+        margin: 0px;
+        margin-bottom: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+    }
+
+    body{
+    background-image: url("../images/bgimg2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: 0.5;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-image: fixed;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    }
+}
