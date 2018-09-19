@@ -124,6 +124,106 @@ $("#add-drink-choices-btn").on("click", function (event) {
     $(".inst").empty();
 });
 
+//This function handles the random cocktail function to parse the db api
+function callRandomCocktail () {
+    let randomCocktailDBURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+
+//Response from Cocktail DB
+    $.ajax({
+    url: randomCocktailDBURL,
+    method: "GET"
+    }).then(function(response){
+    let randomCocktailDbApiResponse = response;
+        console.log(randomCocktailDbApiResponse);
+    
+//Build the image html
+    let image = $("<img>")
+                .addClass("card-img-top")
+                .attr("src", randomCocktailDbApiResponse.drinks[0].strDrinkThumb)
+                .attr("alt", "Card Image Cap");
+
+//Build cocktail name html
+    let drinkName = $("<h3>")
+                .attr("id","drinkName")
+                .text(randomCocktailDbApiResponse.drinks[0].strDrink);
+
+//Add the cocktail image and name to the page
+        $(".drink-image").append(drinkName).append(image);
+
+    let ingredient = [randomCocktailDbApiResponse.drinks[0].strIngredient1,
+                        randomCocktailDbApiResponse.drinks[0].strIngredient2,
+                        randomCocktailDbApiResponse.drinks[0].strIngredient3,
+                        randomCocktailDbApiResponse.drinks[0].strIngredient4,
+                        randomCocktailDbApiResponse.drinks[0].strIngredient5,
+                        randomCocktailDbApiResponse.drinks[0].strIngredient6,
+                        randomCocktailDbApiResponse.drinks[0].strIngredient7,
+                        randomCocktailDbApiResponse.drinks[0].strIngredient8,
+                        randomCocktailDbApiResponse.drinks[0].strIngredient9,
+                        randomCocktailDbApiResponse.drinks[0].strIngredient10,
+                        randomCocktailDbApiResponse.drinks[0].strIngredient11,
+                        randomCocktailDbApiResponse.drinks[0].strIngredient12,
+                        randomCocktailDbApiResponse.drinks[0].strIngredient13,
+                        randomCocktailDbApiResponse.drinks[0].strIngredient14,
+                        randomCocktailDbApiResponse.drinks[0].strIngredient15];
+
+    let measurements = [randomCocktailDbApiResponse.drinks[0].strMeasure1,
+                        randomCocktailDbApiResponse.drinks[0].strMeasure2,
+                        randomCocktailDbApiResponse.drinks[0].strMeasure3,
+                        randomCocktailDbApiResponse.drinks[0].strMeasure4,
+                        randomCocktailDbApiResponse.drinks[0].strMeasure5,
+                        randomCocktailDbApiResponse.drinks[0].strMeasure6,
+                        randomCocktailDbApiResponse.drinks[0].strMeasure7,
+                        randomCocktailDbApiResponse.drinks[0].strMeasure8,
+                        randomCocktailDbApiResponse.drinks[0].strMeasure9,
+                        randomCocktailDbApiResponse.drinks[0].strMeasure10,
+                        randomCocktailDbApiResponse.drinks[0].strMeasure11,
+                        randomCocktailDbApiResponse.drinks[0].strMeasure12,
+                        randomCocktailDbApiResponse.drinks[0].strMeasure13,
+                        randomCocktailDbApiResponse.drinks[0].strMeasure14,
+                        randomCocktailDbApiResponse.drinks[0].strMeasure15];
+//Run through the array of ingredients and measurments
+        ingredientsLoop: for (let i = 0; i < ingredient.length; i++) {
+                console.log (measurements[i] + ingredient[i]);
+//Build list items for ingredients
+        let listItem = $("<li>").text(measurements[i] + ingredient[i]);
+//The cocktail DB Api returns 15 ingredient strings but it's rare that a cocktail has that many ingredients. This if statement will terminate the loop after the last ingredient so that we only display the ingredients available
+            if (ingredient[i] != "") {
+                $("#ingredientList").append(listItem);
+            }else {
+                break ingredientsLoop;
+            }
+        }
+    
+    let instructionP = $("<p>")
+                            .attr("id", "instructions")
+                            .text(randomCocktailDbApiResponse.drinks[0].strInstructions)
+
+        $(".inst").append(instructionP);
+    console.log(randomCocktailDbApiResponse.drinks[0].strDrink);
+});
+
+
+}
+
+
+
+//When the form is submitted, call both api functions and place things on the page as necessary.
+$("#add-random-drink-btn").on("click", function (event) {
+event.preventDefault();
+
+callYoutubeApi();
+callRandomCocktail();
+//On subsequent form submissions, clear values so that we don't have images stacking.
+$(".drink-image").empty();
+//On subsequent searches clear out the previous youtube video otherwise you can have two videos playing at once
+$(".embed-responsive").empty();
+//On subsequent form submissions, clear values so that we don't have ingredients stacking.
+$("#ingredientList").empty();
+//On subsequent form submissions, clear instruction values.
+$(".inst").empty();
+});
+
+
 // constructs the suggestion engine for searching by cocktail NAME
 var cocktail_suggestions = new Bloodhound ({
     datumTokenizer: Bloodhound.tokenizers.whitespace, 
