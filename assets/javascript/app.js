@@ -6,7 +6,7 @@ function callYoutubeApi() {
     let youTubeURL =
       "https://www.googleapis.com/youtube/v3/search?q=" +
       cockTail +
-      "&part=snippet&channelId=UCaDY8WjYWy36bnt0RVzSklw&type=video&order=relevance&videoEmbeddable=true&key=AIzaSyAl9Bp8LbWiQeAUi0_6uRBLLhnBI6le7K4";
+      "&part=snippet&channelId=UClp7vBD8JkJRRPBIdXPnDfA&type=video&order=relevance&videoEmbeddable=true&key=AIzaSyAl9Bp8LbWiQeAUi0_6uRBLLhnBI6le7K4";
   
     // Get Response from the Youtube API
     $.ajax({
@@ -14,7 +14,20 @@ function callYoutubeApi() {
       method: "GET"
     }).then(function(response) {
       let youTubeApiResponse = response;
-      console.log(youTubeApiResponse);
+      let videosAvailable = youTubeApiResponse.pageInfo.totalResults; 
+            console.log(youTubeApiResponse);
+            console.log(videosAvailable === 0); 
+      
+      if (videosAvailable === 0) {
+        // Build iframe html
+                let iframe = $("<iframe>")
+                    .addClass("embed-responsive-item")
+                    .attr("src", "https://www.youtube.com/embed/1_5XphCqqes");
+        //Add the iframe to the page.
+                $(".video-message").prepend("<p>Sorry, we couldn't find a good video for that particular cocktails but here's a video that will help you incorporate the ingredients above to make this cocktail.</p>");
+                $(".embed-responsive").append(iframe);
+        
+              }else {
       //Capture the video ID from api as it will be needed to build the appropriate video URL.
       let videoID = youTubeApiResponse.items[0].id.videoId;
       //Build embed URL from API response
@@ -26,8 +39,9 @@ function callYoutubeApi() {
         .attr("src", videoURL);
       //Add the iframe to the page.
       $(".embed-responsive").append(iframe);
-    });
-  }
+    };
+  });
+}
   //This function handles the cocktail db API
   function callcocktailDbApi() {
     let cockTail = $("#drink-name-input")
