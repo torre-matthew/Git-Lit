@@ -40,41 +40,74 @@
         </nav>
     </div>
             
-        <div id="mobile-navbar" class="pos-f-t">
-                <div class="collapse" id="navbarToggleExternalContent">
-                  <div class="bg-dark p-4">
-                    <h5 class="text-white h4">Collapsed content</h5>
-                    <span class="text-muted">Toggleable via the navbar brand.</span>
-                  </div>
-                </div>
-                <nav class="navbar navbar-dark bg-dark">
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                </nav>
-              </div>
+    <div id="mobile-navbar" class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+            <h5 class="text-white h4">Collapsed content</h5>
+            <span class="text-muted">Toggleable via the navbar brand.</span>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
 
     <div id="top" class="container-fluid">
         <!-- Jumbotron -->
         <div class="container-fluid" id=jumbo-container>
         <div class="jumbotron" style="background-color: rgb(255, 255, 255, 0.6);">
-                <h1 class="text-center">Git-Lit</h1>
-                <h2 class="text-center">All you need to know about the cocktail(s) you’re craving!</h3>
-                
-        </div> 
-        <label for="drink-name-input" style="color:black"><h5>Please Remember to Always drink responsibly.</h5></label> 
-            <input class="form-control drinkInput" id="drink-name-input" placeholder="Input Drink Name" type="text">
-            <button class="btn btn-secondary btn-lg" id="add-drink-choices-btn">Let's Git Lit</button>
+            <h1 class="text-center">Git-Lit</h1>
+            <h2 class="text-center">All you need to know about the cocktail(s) you’re craving!</h2>          
+        </div>
+         
+        <label for="drink-name-input" style="color:black"><h5>Please Remember to Always drink responsibly.</h5></label>
+            <div>
+                <input class="form-control drinkInput" id="drink-name-input" placeholder="Input Drink Name" type="text">
+                <button class="btn btn-secondary btn-lg" id="add-drink-choices-btn">Let's Git Lit</button>
+            </div>
+        </div>
         </div>
 
-        <div class="row">
+        <div class="container">
+                <div class="row">         
+                            <div class="col-md-4 col-sm-6">
+                                <div class="card bg-dark text-white drink-image">
+                                    <img class="card-img" src="assets/images/cocktail3.jpg" alt="cocktail Image">
+                                    <div class="card-img-overlay ovl">
+                                        <h5 class="card-title">Ingredients</h5>
+                                        <ul id="ingredientList"></ul>
+                                    </div>
+                                </div>
+                            </div>      
+                       
+                            <div class="col-md-4 col-sm-6">
+                                <div class="card bg-dark text-white inst">
+                                    <img class="card-img" src="assets/images/mixingcocktail1.jpg" alt="Picture of bartender mixing a cocktail">
+                                    <div class="card-img-overlay ovl">
+                                        <h5 class="card-title">Recipe Instructions</h5>                           
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="col-md-4 col-sm-6">
+                                <div class="card bg-dark text-white embed-responsive embed-responsive-16by9">
+                                    <img class="card-img" src="assets/images/tipsybartender2.jpg" alt="YouTube Video">
+                                    <div class="card-img-overlay ovl">
+                                        <!-- <h5 class="card-title"></h5> -->
+                                    </div>
+                                </div>  
+                            </div>
+
+        <!-- <div class="row">
             <div class="col-md-6">
-                <!-- Add Drink Name/ ingredient  -->
-                <!-- <div class="card mb-4 p-4">
+                Add Drink Name/ ingredient 
+                <div class="card mb-4 p-4">
                     <div class="card-body">
-                        <h2>Drink Search</h2> -->
-                        <!-- Entry Form -->
-                        <!-- <form>
+                        <h2>Drink Search</h2>
+                        Entry Form
+                        <form>
                             <div class="form-group row">
                                 <label for="drink-name-input">Drink Name</label>
                                 <input class="form-control" id="drink-name-input" placeholder="Input Drink Name" type="text">
@@ -82,8 +115,8 @@
                             <button class="btn btn-primary float-right" id="add-random-drink-btn">Git Randomly Lit</button>
                             <button class="btn btn-primary float-right" id="add-drink-choices-btn">Let's Git Lit</button>
                         </form>
-                    </div> -->
-                <!-- </div> -->
+                    </div>
+                </div>
                 <div class="card mb-4 p-4">
                     <div class="card-body drink-image">
                             <img src="assets/images/cocktail1.jpg" alt="cocktail Image" height="450" width="350">
@@ -113,7 +146,7 @@
                         </div>
                     </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
