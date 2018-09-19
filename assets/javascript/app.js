@@ -1,8 +1,8 @@
 //This function handles the youtube api response
 function callYoutubeApi () {
     let cockTail = $("#drink-name-input").val().trim();
-        console.log(cockTail);
-    let youTubeURL = "https://www.googleapis.com/youtube/v3/search?q=" + cockTail + "&part=snippet&channelId=UCaDY8WjYWy36bnt0RVzSklw&type=video&order=relevance&videoEmbeddable=true&key=AIzaSyAl9Bp8LbWiQeAUi0_6uRBLLhnBI6le7K4";
+        // console.log(cockTail);
+    let youTubeURL = "https://www.googleapis.com/youtube/v3/search?q=" + cockTail + "&part=snippet&channelId=UClp7vBD8JkJRRPBIdXPnDfA&type=video&order=relevance&videoEmbeddable=true&key=AIzaSyAl9Bp8LbWiQeAUi0_6uRBLLhnBI6le7K4";
 
 // Get Response from the Youtube API
     $.ajax({
@@ -10,26 +10,41 @@ function callYoutubeApi () {
         method: "GET"
     }).then(function(response){
         let youTubeApiResponse = response;
+        let videosAvailable = youTubeApiResponse.pageInfo.totalResults; 
             console.log(youTubeApiResponse);
+            console.log(videosAvailable === 0);     
+
+
+if (videosAvailable === 0) {
+// Build iframe html
+        let iframe = $("<iframe>")
+            .addClass("embed-responsive-item")
+            .attr("src", "https://www.youtube.com/embed/1_5XphCqqes");
+//Add the iframe to the page.
+        $(".video-message").prepend("<p>Sorry, we couldn't find a good video for that particular cocktails but here's a video that will help you incorporate the ingredients above to make this cocktail.</p>");
+        $(".embed-responsive").append(iframe);
+
+      }else {
 //Capture the video ID from api as it will be needed to build the appropriate video URL.
         let videoID = youTubeApiResponse.items[0].id.videoId;
 //Build embed URL from API response
-        let videoURL = "https://www.youtube.com/embed/" + videoID; 
-            console.log(videoID);
-            console.log(videoURL);
-
+        let videoURL = "https://www.youtube.com/embed/" + videoID;
 // Build iframe html
         let iframe = $("<iframe>")
             .addClass("embed-responsive-item")
             .attr("src", videoURL);
 //Add the iframe to the page.
+$(".video-message").val("");
         $(".embed-responsive").append(iframe);
+      }
+
     });   
 }
+
 //This function handles the cocktail db API
 function callcocktailDbApi () {
     let cockTail = $("#drink-name-input").val().trim();
-        console.log(cockTail);
+        // console.log(cockTail);
     let cocktailDBURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + cockTail;
 
 //Response from Cocktail DB
@@ -38,7 +53,7 @@ function callcocktailDbApi () {
         method: "GET"
     }).then(function(response){
         let cocktailDbApiResponse = response;
-            console.log(cocktailDbApiResponse);
+            // console.log(cocktailDbApiResponse);
 
 //Build the image html
         let image = $("<img>")
@@ -87,7 +102,7 @@ function callcocktailDbApi () {
                             cocktailDbApiResponse.drinks[0].strMeasure15];
 //Run through the array of ingredients and measurments
             ingredientsLoop: for (let i = 0; i < ingredient.length; i++) {
-                    console.log (measurements[i] + ingredient[i]);
+                    // console.log (measurements[i] + ingredient[i]);
     //Build list items for ingredients
             let listItem = $("<li>").text(measurements[i] + ingredient[i]);
     //The cocktail DB Api returns 15 ingredient strings but it's rare that a cocktail has that many ingredients. This if statement will terminate the loop after the last ingredient so that we only display the ingredients available
