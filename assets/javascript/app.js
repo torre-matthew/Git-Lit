@@ -24,7 +24,7 @@ function callYoutubeApi() {
                     .addClass("embed-responsive-item")
                     .attr("src", "https://www.youtube.com/embed/1_5XphCqqes");
         //Add the iframe to the page.
-                $(".video-message").prepend("<p>Sorry, we couldn't find a good video for that particular cocktails but here's a video that will help you incorporate the ingredients above to make this cocktail.</p>");
+                $(".video-message").prepend("<p>Sorry, we couldn't find a good video for that particular cocktail but here's a video that will help you incorporate the ingredients above to make cocktail great.</p>");
                 $(".embed-responsive").append(iframe);
         
               }else {
@@ -142,6 +142,8 @@ function callYoutubeApi() {
     $("#ingredientList").empty();
     //On subsequent form submissions, clear instruction values.
     $(".inst").empty();
+    //clear the message on each click
+    $(".video-message").empty();
   });
   
   //This function handles the random cocktail function to parse the db api
@@ -250,6 +252,7 @@ function callYoutubeApi() {
   const getRandomVideoUrl = response => {
     return `https://www.youtube.com/embed/${response.items[0].id.videoId}`;
   };
+
   
 //Build embed URL from API response
   const renderVideoIframe = videoUrl => {
