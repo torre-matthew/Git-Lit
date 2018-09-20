@@ -236,7 +236,7 @@ function callYoutubeApi() {
   
   //This function handles the youtube api response for random response
   const callRandomYoutubeApi = (cocktail) => {
-      let url = `https://www.googleapis.com/youtube/v3/search?q=${cocktail}&part=snippet&channelId=UCaDY8WjYWy36bnt0RVzSklw&type=video&order=relevance&videoEmbeddable=true&key=AIzaSyAl9Bp8LbWiQeAUi0_6uRBLLhnBI6le7K4`;
+      let url = `https://www.googleapis.com/youtube/v3/search?q=${cocktail}&part=snippet&channelId=UCm4_NTvhixXU3YFetu8z-aA&type=video&order=relevance&videoEmbeddable=true&key=AIzaSyAl9Bp8LbWiQeAUi0_6uRBLLhnBI6le7K4`;
     
       let params = {
         url,
@@ -248,7 +248,13 @@ function callYoutubeApi() {
   
   //Capture the video ID from api as it will be needed to build the appropriate video URL. 
   const getRandomVideoUrl = response => {
+    let videosAvailable = response.pageInfo.totalResults;
+
+    if (videosAvailable === 0) {
+      return 'https://www.youtube.com/embed/1_5XphCqqes'
+    }else {
     return `https://www.youtube.com/embed/${response.items[0].id.videoId}`;
+    }
   };
   
 //Build embed URL from API response
