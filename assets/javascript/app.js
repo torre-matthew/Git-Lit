@@ -131,6 +131,8 @@ function callYoutubeApi() {
   //When the form is submitted, call both api functions and place things on the page as necessary.
   $("#add-drink-choices-btn").on("click", function(event) {
     event.preventDefault();
+    $(".container").show();
+    $(".cards").show();
   
     callYoutubeApi();
     callcocktailDbApi();
@@ -263,6 +265,8 @@ function callYoutubeApi() {
   //When the form is submitted, call both api functions and place things on the page as necessary.
   $("#add-random-drink-btn").on("click", async event => {
     event.preventDefault();
+    $(".container").show();
+    $(".cards").show();
     handleClearRandom();
     const cocktailData = await callRandomCocktail();
     const videoData = await callRandomYoutubeApi(cocktailData.drinks[0].strDrink);
@@ -858,3 +862,7 @@ function callYoutubeApi() {
     }
   );
   
+  $( document ).ready(function() {
+    $(".container").hide();
+    $(".cards").hide();
+});
