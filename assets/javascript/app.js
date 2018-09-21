@@ -6,7 +6,7 @@ function callYoutubeApi() {
     let youTubeURL =
       "https://www.googleapis.com/youtube/v3/search?q=" +
       cockTail +
-      "&part=snippet&channelId=UClp7vBD8JkJRRPBIdXPnDfA&type=video&order=relevance&videoEmbeddable=true&key=AIzaSyAl9Bp8LbWiQeAUi0_6uRBLLhnBI6le7K4";
+      "&part=snippet&channelId=UCm4_NTvhixXU3YFetu8z-aA&type=video&order=relevance&videoEmbeddable=true&key=AIzaSyAl9Bp8LbWiQeAUi0_6uRBLLhnBI6le7K4";
   
     // Get Response from the Youtube API
     $.ajax({
@@ -24,7 +24,7 @@ function callYoutubeApi() {
                     .addClass("embed-responsive-item")
                     .attr("src", "https://www.youtube.com/embed/1_5XphCqqes");
         //Add the iframe to the page.
-                $(".video-message").prepend("<p>Sorry, we couldn't find a good video for that particular cocktails but here's a video that will help you incorporate the ingredients above to make this cocktail.</p>");
+                $(".video-message").prepend("<p>Sorry, we couldn't find a good video for that particular cocktail but here's a video that will help you incorporate the ingredients above to make cocktail great.</p>");
                 $(".embed-responsive").append(iframe);
         
               }else {
@@ -131,6 +131,8 @@ function callYoutubeApi() {
   //When the form is submitted, call both api functions and place things on the page as necessary.
   $("#add-drink-choices-btn").on("click", function(event) {
     event.preventDefault();
+    $(".container").show();
+    $(".cards").show();
   
     callYoutubeApi();
     callcocktailDbApi();
@@ -142,6 +144,8 @@ function callYoutubeApi() {
     $("#ingredientList").empty();
     //On subsequent form submissions, clear instruction values.
     $(".inst").empty();
+    //clear the message on each click
+    $(".video-message").empty();
   });
   
   //This function handles the random cocktail function to parse the db api
@@ -236,7 +240,7 @@ function callYoutubeApi() {
   
   //This function handles the youtube api response for random response
   const callRandomYoutubeApi = (cocktail) => {
-      let url = `https://www.googleapis.com/youtube/v3/search?q=${cocktail}&part=snippet&channelId=UCaDY8WjYWy36bnt0RVzSklw&type=video&order=relevance&videoEmbeddable=true&key=AIzaSyAl9Bp8LbWiQeAUi0_6uRBLLhnBI6le7K4`;
+      let url = `https://www.googleapis.com/youtube/v3/search?q=${cocktail}&part=snippet&channelId=UCm4_NTvhixXU3YFetu8z-aA&type=video&order=relevance&videoEmbeddable=true&key=AIzaSyAl9Bp8LbWiQeAUi0_6uRBLLhnBI6le7K4`;
     
       let params = {
         url,
@@ -254,6 +258,7 @@ function callYoutubeApi() {
     return `https://www.youtube.com/embed/${response.items[0].id.videoId}`
         }
   };
+
   
 //Build embed URL from API response
   const renderVideoIframe = videoUrl => {
@@ -267,6 +272,8 @@ function callYoutubeApi() {
   //When the form is submitted, call both api functions and place things on the page as necessary.
   $("#add-random-drink-btn").on("click", async event => {
     event.preventDefault();
+    $(".container").show();
+    $(".cards").show();
     handleClearRandom();
     const cocktailData = await callRandomCocktail();
     const videoData = await callRandomYoutubeApi(cocktailData.drinks[0].strDrink);
@@ -862,3 +869,7 @@ function callYoutubeApi() {
     }
   );
   
+  $( document ).ready(function() {
+    $(".container").hide();
+    $(".cards").hide();
+});

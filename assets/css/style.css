@@ -16,9 +16,6 @@
 }
 
 input#drink-name-input.form-control{
-    /* margin: 20px; */
-    /* margin-left: 15%;
-    margin-right: 15%; */
     width: 100%;
 }
 
@@ -58,24 +55,8 @@ h5{
     text-align: center;
 }
 
-/* body{
-    background-image: url("../images/bgimg2.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-image: 0.5;
-    margin-top: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-image: fixed;
-    -ms-background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-} */
-
 .tt-menu { /*THIS IS THE CLASS FOR THE DROPDOWN MENU OF SUGGESTIONS*/
-    width: 222px;
+    width: 165px;
     margin-top: 12px;
     /* CHANGE MARGIN TO MOVE MENU */
     margin-left:0%;
