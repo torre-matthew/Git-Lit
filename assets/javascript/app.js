@@ -15,8 +15,8 @@ function callYoutubeApi() {
     }).then(function(response) {
       let youTubeApiResponse = response;
       let videosAvailable = youTubeApiResponse.pageInfo.totalResults; 
-            console.log(youTubeApiResponse);
-            console.log(videosAvailable === 0); 
+            // console.log(youTubeApiResponse);
+            // console.log(videosAvailable === 0); 
       
       if (videosAvailable === 0) {
         // Build iframe html
@@ -24,7 +24,7 @@ function callYoutubeApi() {
                     .addClass("embed-responsive-item")
                     .attr("src", "https://www.youtube.com/embed/1_5XphCqqes");
         //Add the iframe to the page.
-                $(".video-message").prepend("<p>Sorry, we couldn't find a good video for that particular cocktails but here's a video that will help you incorporate the ingredients above to make this cocktail.</p>");
+                $(".video-message").prepend("<p>Sorry, we couldn't find a good video for that particular cocktail but here's a video that will help you incorporate the ingredients above to make cocktail great.</p>");
                 $(".embed-responsive").append(iframe);
         
               }else {
@@ -144,6 +144,8 @@ function callYoutubeApi() {
     $("#ingredientList").empty();
     //On subsequent form submissions, clear instruction values.
     $(".inst").empty();
+    //clear the message on each click
+    $(".video-message").empty();
   });
   
   //This function handles the random cocktail function to parse the db api
@@ -165,7 +167,7 @@ function callYoutubeApi() {
   
   //Build the image html
   const renderRandomCocktailHtml = data => {
-    console.log("random cocktail ",data)
+    // console.log("random cocktail ",data)
     let image = $("<img>")
       .addClass("card-img-top")
       .attr("src", data.drinks[0].strDrinkThumb)
@@ -218,7 +220,7 @@ function callYoutubeApi() {
     ];
     //Run through the array of ingredients and measurments
     ingredientsLoop: for (let i = 0; i < ingredient.length; i++) {
-      console.log(measurements[i] + ingredient[i]);
+    //   console.log(measurements[i] + ingredient[i]);
       //Build list items for ingredients
       let listItem = $("<li>").text(measurements[i] + ingredient[i]);
       //The cocktail DB Api returns 15 ingredient strings but it's rare that a cocktail has that many ingredients. This if statement will terminate the loop after the last ingredient so that we only display the ingredients available
@@ -250,14 +252,13 @@ function callYoutubeApi() {
   
   //Capture the video ID from api as it will be needed to build the appropriate video URL. 
   const getRandomVideoUrl = response => {
-    let videosAvailable = response.pageInfo.totalResults;
-
-    if (videosAvailable === 0) {
-      return 'https://www.youtube.com/embed/1_5XphCqqes'
-    }else {
-    return `https://www.youtube.com/embed/${response.items[0].id.videoId}`;
-    }
+      if (response.pageInfo.totalResults === 0) {
+    return "https://www.youtube.com/embed/1_5XphCqqes"
+        }else {
+    return `https://www.youtube.com/embed/${response.items[0].id.videoId}`
+        }
   };
+
   
 //Build embed URL from API response
   const renderVideoIframe = videoUrl => {
