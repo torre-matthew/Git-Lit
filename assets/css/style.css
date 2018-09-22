@@ -44,11 +44,11 @@ h5{
     background-image: url("../images/bgimg2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 600px;
+    min-height: 100vh;
     width: 100%;
     background-size: 100%;
     margin: 0px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     margin-top: 77px !important;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -133,32 +133,72 @@ img{
     }
 }
 
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 600px) {
-    /* Styles */
+ /* Small devices (landscape phones, 576px and up) */
+ @media (max-width: 767.98px) {
     #mobile-navbar{
         display: inline;
     }
     #desktop-navbar{
         display: none;
     }
+    main{
+        background-image: url("../images/bgimg2.jpg");
+    }
+    #jumbo-container{
+        margin-top: 0!important;
+        
+    }
+    h1.text-center{
+        font-size: 40px!important;
+    }
+    h2.text-center{
+        font-size: 15px!important;
+    }
+    h5{
+        margin-top: 30px!important;
+        font-size: 15px!important
+    }
+    button#add-drink-choices-btn{
+        margin-top: 10%;
+        margin-bottom: 5px; 
+        margin-left: 30%;
+        margin-right: 30%;
+    }
 }
 
-/* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 600px) and (max-device-width : 1024px) {
-    /* Styles */
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
     #mobile-navbar{
-        display: none;
-    }
-    #desktop-navbar{
         display: inline;
     }
+    #desktop-navbar{
+        display: none;
+    }
+    main{
+        background-image: url("../images/bgimg2.jpg");
+    }
+    #jumbo-container{
+        margin-top: 0!important;
+        min-height: 0;
+    }
+    h1.text-center{
+        font-size: 40px!important;
+    }
+    h2.text-center{
+        font-size: 15px!important;
+    }
+    h5{
+        margin-top: 30px!important;
+        font-size: 15px!important
+    }
 }
 
-/* .row {
-    border: 2px solid green;
-}
+/* Large devices (desktops, 992px and up) */
+/* @media (min-width: 992px) {
 
-.col {
-    border: 2px solid red;
+} */
+
+/* Extra large devices (large desktops, 1200px and up) */
+/* @media (min-width: 1200px) {
+
 } */
