@@ -133,6 +133,29 @@ img{
     }
 }
 
+/* Smartphones (portrait and landscape) ----------- */
+/* @media only screen and (min-device-width : 320px) and (max-device-width : 600px) {
+    #mobile-navbar{
+        display: inline;
+    }
+    #desktop-navbar{
+        display: none;
+    }
+} */
+
+/* iPads (portrait and landscape) ----------- */
+/* @media only screen and (min-device-width : 600px) and (max-device-width : 1024px) {
+    #mobile-navbar{
+        display: none;
+    }
+    #desktop-navbar{
+        display: inline;
+    }
+} */
+
+ /* Extra small devices (portrait phones, less than 576px)
+ No media query since this is the default in Bootstrap */
+
  /* Small devices (landscape phones, 576px and up) */
  @media (max-width: 767.98px) {
     #mobile-navbar{

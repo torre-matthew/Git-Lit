@@ -6,7 +6,7 @@ function callYoutubeApi() {
     let youTubeURL =
       "https://www.googleapis.com/youtube/v3/search?q=" +
       cockTail +
-      "&part=snippet&channelId=UCm4_NTvhixXU3YFetu8z-aA&type=video&order=relevance&videoEmbeddable=true&key=AIzaSyAl9Bp8LbWiQeAUi0_6uRBLLhnBI6le7K4";
+      "&part=snippet&channelId=UCaDY8WjYWy36bnt0RVzSklw&type=video&order=relevance&videoEmbeddable=true&key=AIzaSyAl9Bp8LbWiQeAUi0_6uRBLLhnBI6le7K4";
   
     // Get Response from the Youtube API
     $.ajax({
@@ -22,7 +22,7 @@ function callYoutubeApi() {
         // Build iframe html
                 let iframe = $("<iframe>")
                     .addClass("embed-responsive-item")
-                    .attr("src", "https://www.youtube.com/embed/1_5XphCqqes");
+                    .attr("src", "https://www.youtube.com/embed/CVDAoXEu3D8");
         //Add the iframe to the page.
                 $(".video-message").prepend("<p>Sorry, we couldn't find a good video for that particular cocktail but here's a video that will help you incorporate the ingredients above to make cocktail great.</p>");
                 $(".embed-responsive").append(iframe);
@@ -236,6 +236,7 @@ function callYoutubeApi() {
       .text(data.drinks[0].strInstructions);
   
     $(".inst").append(instructionP);
+    console.log(cockTail);
   };
   
   //This function handles the youtube api response for random response
@@ -253,7 +254,7 @@ function callYoutubeApi() {
   //Capture the video ID from api as it will be needed to build the appropriate video URL. 
   const getRandomVideoUrl = response => {
       if (response.pageInfo.totalResults === 0) {
-    return "https://www.youtube.com/embed/1_5XphCqqes"
+    return "https://www.youtube.com/embed/CVDAoXEu3D8"
         }else {
     return `https://www.youtube.com/embed/${response.items[0].id.videoId}`
         }
@@ -290,6 +291,8 @@ function callYoutubeApi() {
     $("#ingredientList").empty();
     //On subsequent form submissions, clear instruction values.
     $(".inst").empty();
+    //clear the message on each click
+    $(".video-message").empty();
   }
   // constructs the suggestion engine for searching by cocktail NAME
   var cocktail_suggestions = new Bloodhound({
