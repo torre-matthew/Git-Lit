@@ -40,6 +40,12 @@ h5{
     border-radius: 5px;
 }
 
+.logo{
+    margin: 5px;
+    height: 42px; 
+    width: 42px;
+}
+
 #jumbo-container {
     background-image: url("../images/bgimg2.jpg");
     background-repeat: no-repeat;
