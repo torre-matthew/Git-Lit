@@ -46,6 +46,10 @@ h5{
     width: 42px;
 }
 
+.nav-link{
+    color: white;
+}
+
 #jumbo-container {
     background-image: url("../images/bgimg2.jpg");
     background-repeat: no-repeat;
