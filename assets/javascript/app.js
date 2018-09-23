@@ -64,13 +64,18 @@ function callYoutubeApi() {
         .attr("alt", "Card Image Cap");
   
       //Build cocktail name html
-      let drinkName = $("<h3>")
+      let drinkName = $("<h2>")
         .attr("id", "drinkName")
         .text(cocktailDbApiResponse.drinks[0].strDrink);
+
+      let favStar = $("<i>")
+        .addClass("far fa-star fa-2x")
+        .attr("data-drinkName", cocktailDbApiResponse.drinks[0].strDrink);
   
       //Add the cocktail image and name to the page
       $(".drink-image")
         .append(drinkName)
+        .append(favStar)
         .append(image);
   
       let ingredient = [
@@ -174,7 +179,7 @@ function callYoutubeApi() {
       .attr("alt", "Card Image Cap");
   
     //Build cocktail name html
-    let drinkName = $("<h3>")
+    let drinkName = $("<h2>")
       .attr("id", "drinkName")
       .text(data.drinks[0].strDrink);
   
@@ -875,4 +880,10 @@ function callYoutubeApi() {
   $( document ).ready(function() {
     $(".container").hide();
     $(".cards").hide();
+});
+
+$("body").on("click", ".fa-star",function (event) {
+    $(".fa-star").addClass("fas fa-star fa-2x")
+    console.log($(this).attr("data-drinkName"));
+
 });

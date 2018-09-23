@@ -193,6 +193,18 @@ img{
     }
 }
 
+#drinkName {
+    float: left;
+}
+
+.fa-star {
+    float: right;
+}
+
+i:hover {
+    color: rgb(167, 23, 83);
+}
+
 /* Large devices (desktops, 992px and up) */
 /* @media (min-width: 992px) {
 
