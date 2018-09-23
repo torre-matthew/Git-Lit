@@ -16,7 +16,7 @@
 }
 
 .top{
-    margin-top: 100px;
+    margin-top: 82px;
 }
 
 .logo{
@@ -91,10 +91,6 @@
     main{
         background-image: url("../images/bgimg2.jpg");
     }
-    #jumbo-container{
-        margin-top: 0!important;
-        min-height: 0;
-    }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -105,4 +101,14 @@
 /* Extra large devices (large desktops, 1200px and up) */
 /* @media (min-width: 1200px) {
 
+} */
+
+
+/* .col{
+    border-color: red;
+    border-style: solid;
+}
+.row{
+    border-color: green;
+    border-style: solid;
 } */
