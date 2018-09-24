@@ -25,6 +25,10 @@
     width: 42px;
 }
 
+.nav-link{
+    color: white;
+}
+
 .ovl{
     opacity: 0;
     transition: 0.5s;
