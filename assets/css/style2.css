@@ -1,0 +1,118 @@
+*{
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 15px; 
+}
+
+#mobile-navbar{
+    display: none;
+}
+
+#desktop-navbar{
+    display: inline;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.top{
+    margin-top: 82px;
+}
+
+.logo{
+    margin: 5px;
+    height: 42px; 
+    width: 42px;
+}
+
+.nav-link{
+    color: white;
+}
+
+.ovl{
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.ovl:hover{
+    opacity: 1;
+    text-align: center; 
+    background: rgb(0,0,0,0.6);
+}
+
+.footer {
+    position: fixed;
+    margin-top: 10px;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    background-color: #f5f5f5;
+    display: block;
+    box-sizing: border-box;
+}
+.fab{
+    color: white;
+    font-size: 20px;
+    margin: 10px;
+}
+
+@media screen and (max-width: 700px){    
+    div.container.content{
+        background-image:url("assets/images/symphony.png");
+        text-align: center;
+    }
+}
+
+ /* Small devices (landscape phones, 576px and up) */
+ @media (max-width: 767.98px) {
+    #mobile-navbar{
+        display: inline;
+    }
+    #desktop-navbar{
+        display: none;
+    }
+    main{
+        background-image: url("../images/bgimg2.jpg");
+    }
+    h1.text-center{
+        font-size: 40px!important;
+    }
+    h2.text-center{
+        font-size: 15px!important;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #mobile-navbar{
+        display: inline;
+    }
+    #desktop-navbar{
+        display: none;
+    }
+    main{
+        background-image: url("../images/bgimg2.jpg");
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+/* @media (min-width: 992px) {
+
+} */
+
+/* Extra large devices (large desktops, 1200px and up) */
+/* @media (min-width: 1200px) {
+
+} */
+
+
+/* .col{
+    border-color: red;
+    border-style: solid;
+}
+.row{
+    border-color: green;
+    border-style: solid;
+} */
