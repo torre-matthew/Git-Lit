@@ -64,13 +64,19 @@ function callYoutubeApi() {
         .attr("alt", "Card Image Cap");
   
       //Build cocktail name html
-      let drinkName = $("<h3>")
+      let drinkName = $("<h2>")
         .attr("id", "drinkName")
         .text(cocktailDbApiResponse.drinks[0].strDrink);
+
+      let favStar = $("<i>")
+        .addClass("far fa-star fa-2x")
+        .attr("data-drinkName", cocktailDbApiResponse.drinks[0].strDrink)
+        .attr("data-fav", "no");
   
       //Add the cocktail image and name to the page
       $(".drink-image")
         .append(drinkName)
+        .append(favStar)
         .append(image);
   
       let ingredient = [
@@ -174,7 +180,7 @@ function callYoutubeApi() {
       .attr("alt", "Card Image Cap");
   
     //Build cocktail name html
-    let drinkName = $("<h3>")
+    let drinkName = $("<h2>")
       .attr("id", "drinkName")
       .text(data.drinks[0].strDrink);
   
@@ -876,3 +882,33 @@ function callYoutubeApi() {
     $(".container").hide();
     $(".cards").hide();
 });
+
+$("body").on("click", ".fa-star", function favAddClickHandler(event) { 
+    var addedDrink = $(this).attr("data-drinkName");
+        if ($(this).attr("data-fav") === "no"){
+                addToFav(addedDrink);
+            }else if ($(this).attr("data-fav") === "yes") {
+                removeFromFav();
+            }            
+});
+
+function addToFav(drink) {
+
+    $(".fa-star")
+        .removeClass("far fa-star fa-2x")
+        .addClass("fas fa-star fa-2x")
+        .css("color","rgb(57, 255, 20)")
+        .attr("data-fav","yes");
+
+    $(".dropdown-menu")
+        .append("<a class='dropdown-item'>" + drink + "</a>");
+    
+}
+
+function removeFromFav(drink) {
+     $(".fa-star")
+        .removeClass("fas fa-star fa-2x")
+        .addClass("far fa-star fa-2x")
+        .css("color","black")
+        .attr("data-fav","no");
+}
